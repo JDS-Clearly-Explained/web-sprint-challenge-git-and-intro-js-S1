@@ -232,9 +232,10 @@ Use getArtistByIndex to do the following:
 🌟 EXAMPLE: if getArtistByIndex is invoked with the artists array and the number 0, it will return `the artist at index 0 is Amedeo Modigliani` */
 
 function getArtistByIndex(artistArray, index) {
-  return `the artist at index ${index} is ${artistArray[index].name}`;
+  return `the artist at index ${artistArray[index].id} is ${artistArray[index].name}`;
 }
 
+console.log('task 3:', getArtistByIndex(artists, 0));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -246,12 +247,26 @@ Use listOfNames to do the following:
 */
 
 function listOfNames(artistArray) {
+  //create a new array
   let newArray = [];
   for (let i = 0; i < artistArray.length; i++) {
+    //loop over the array and push just the artist's name into the new array
     newArray.push(artistArray[i].name);
   }
   return newArray;
 }
+
+// or:
+// function listOfNames(array) {
+  //create a new array as a copy of the parameter array
+//   const copyArr = [...array];
+//   for(let i = 0; i < copyArr.length; i++) {
+  //loop over the new array and update each index of the array to equal just the artist's name
+//     copyArr[i] = copyArr[i].name;
+//   }
+
+//   return copyArr;
+// }
 
 
 
@@ -265,7 +280,9 @@ Use removeArtist to do the following:
 🌟 EXAMPLE: if removeArtist is invoked with the artists array and the number 0, it will return the resulting array with Amedeo Modigliani removed from our dataset. */
 
 function removeArtist(artistArray, index) {
+  //create a new array as a copy of the parameter array
   let newArray = [...artistArray];
+  //remove an artist from the copied array at the desired index
   newArray.splice(index, 1);
   return newArray;
 
@@ -302,8 +319,11 @@ Use addArtist to do the following:
 🌟 EXAMPLE: Invoking addArtist(artists, 'John Doe', '1988-2022', 'Full Stack Development', 'African American', 'I have a background in customer service at Big Retail Chain. I am attending BloomTech to become a Frontend Developer.') should return the artists array with the above object added to the end of the array. */
 
 function addArtist(artistArray, name, years, genre, nationality, bio) {
+  //create a copy of the array parameter
   let newArray = [...artistArray];
+  //create an object with the following format
   let newArtist = { name, years, genre, nationality, bio };
+  //add the newly created object to the copied array, then return the copied array
   newArray.push(newArtist);
   return newArray;
 }
@@ -319,8 +339,10 @@ Use lotsOfArt to do the following:
 */
 
 function lotsOfArt(artistArray) {
+  //create a new array
   let newArray = [];
   for (let i = 0; i < artistArray.length; i++) {
+    //if the artist painted more than 100 paintings, push their name into the new array
     if (artistArray[i].paintings > 100) {
       newArray.push(artistArray[i].name);
     }
@@ -342,6 +364,7 @@ Use artistInfo to do the following:
 
 function artistInfo(artistArray, name) {
   for (let i = 0; i < artistArray.length; i++) {
+    //if the artist's name matches the name passed in as a parameter, return their bio
     if (artistArray[i].name === name) {
       return artistArray[i].bio;
     }
@@ -363,6 +386,7 @@ Use artistByCountry to do the following:
 function artistByCountry(artistArray, nationality){
   let newArray = [];
   for (let i = 0; i < artistArray.length; i++) {
+    //if the nationality of the artist matches the nationality passed in as a parameter, push their name into the new array
     if (artistArray[i].nationality === nationality )
     newArray.push(artistArray[i].name);
   }
